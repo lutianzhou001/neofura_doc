@@ -1,26 +1,46 @@
 ---
-description: Gets the active address count in several days
+description: Gets the Nep17 transfer by blockheight
 ---
 
-# GetActiveAddresses
+# GetNep17TransferByBlockHeight
 
 ### API Format
 
-{% swagger baseUrl="https://testneofura.ngd.network:444" method="post" path="" summary="" %}
+{% swagger method="post" path="" baseUrl="https://testneofura.ngd.network" summary="" %}
 {% swagger-description %}
-query active addresses
+
 {% endswagger-description %}
 
-{% swagger-parameter in="body" name="Days" required="true" type="Int" %}
-The name of the pet
+{% swagger-parameter in="body" name="BlockHeight" type="int" required="true" %}
+the blockheight
 {% endswagger-parameter %}
 
-{% swagger-response status="200" description="query successfully returned" %}
+{% swagger-parameter in="body" name="Limit" type="int" %}
+the number of items to return
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="Skip" type="int" %}
+the number of items to skip
+{% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="" %}
 ```javascript
 {
     "id": 1,
     "result": {
         "result": [
+            {
+                "_id": "614bfc5f30669383446d6d32",
+                "blockhash": "0x2d3ac96785404ad370f7063db1a11f5b4018ebdd6b80754394360740bcc90c95",
+                "contract": "0xd2a4cff31913016155e38e474a2c06d08be276cf",
+                "from": "0x59057af11833590dff6a8f736fcd5fca46e12289",
+                "frombalance": "62598983980",
+                "timestamp": 1627871579237,
+                "to": null,
+                "tobalance": "0",
+                "txid": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "value": "23100975"
+            },
             {
                 "_id": "614bfc5f30669383446d6d30",
                 "blockhash": "0x2d3ac96785404ad370f7063db1a11f5b4018ebdd6b80754394360740bcc90c95",
@@ -44,18 +64,6 @@ The name of the pet
                 "tobalance": "131357741660",
                 "txid": "0x0000000000000000000000000000000000000000000000000000000000000000",
                 "value": "50000000"
-            },
-            {
-                "_id": "614bfc5f30669383446d6d32",
-                "blockhash": "0x2d3ac96785404ad370f7063db1a11f5b4018ebdd6b80754394360740bcc90c95",
-                "contract": "0xd2a4cff31913016155e38e474a2c06d08be276cf",
-                "from": "0x59057af11833590dff6a8f736fcd5fca46e12289",
-                "frombalance": "62598983980",
-                "timestamp": 1627871579237,
-                "to": null,
-                "tobalance": "0",
-                "txid": "0x0000000000000000000000000000000000000000000000000000000000000000",
-                "value": "23100975"
             }
         ],
         "totalCount": 3
@@ -70,20 +78,16 @@ The name of the pet
 
 {% tabs %}
 {% tab title="cURL" %}
-
-
 ```
 curl --location --request POST 'https://testneofura.ngd.network:444' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "jsonrpc": "2.0",
-    "id": 1,
-    "params": {"Days":5},
-    "method": "GetActiveAddresses"
+    "jsonrpc":"2.0",
+    "method":"GetNep17TransferByBlockHeight",
+    "params":{"BlockHeight":69981},
+    "id":1
 }'
 ```
-
-
 {% endtab %}
 
 {% tab title="Nodejs" %}
@@ -97,11 +101,11 @@ var options = {
   },
   body: JSON.stringify({
     "jsonrpc": "2.0",
-    "id": 1,
+    "method": "GetNep17TransferByBlockHeight",
     "params": {
-      "Days": 5
+      "BlockHeight": 69981
     },
-    "method": "GetActiveAddresses"
+    "id": 1
   })
 
 };
@@ -109,9 +113,6 @@ request(options, function (error, response) {
   if (error) throw new Error(error);
   console.log(response.body);
 });
-
 ```
-
-
 {% endtab %}
 {% endtabs %}

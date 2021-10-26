@@ -1,8 +1,8 @@
 ---
-description: Gets the list of addresses
+description: Gets the execution by transactionhash
 ---
 
-# GetAddressList
+# GetExecutionByTransactionHash
 
 ### API Format
 
@@ -11,12 +11,8 @@ description: Gets the list of addresses
 
 {% endswagger-description %}
 
-{% swagger-parameter in="body" name="Limit" type="Int" required="true" %}
-the number of items to return
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="Skip" type="Int" required="true" %}
-the number of items to skip
+{% swagger-parameter in="body" name="TransactionHash" required="true" %}
+the transactionhash
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}
@@ -24,19 +20,14 @@ the number of items to skip
 {
     "id": 1,
     "result": {
-        "result": [
-            {
-                "_id": "61656ccb0f08664e4d486554",
-                "address": "0xbb0d6102deb178ec62b56c163796bd3d33ff6884",
-                "firstusetime": 1634036938160
-            },
-            {
-                "_id": "616526240f08664e4d48451a",
-                "address": "0x550f5098ea3647744d699c851733c397647c39b8",
-                "firstusetime": 1634018852638
-            }
-        ],
-        "totalCount": 721
+        "_id": "614befd9a1411184355217d2",
+        "blockhash": "0xcf35068b43281d700c6c7fc160ab844e74afeda08e793d061bbd1bc1a1203bd4",
+        "exception": null,
+        "gasconsumed": 9977780,
+        "timestamp": 1626850227986,
+        "trigger": "Application",
+        "txid": "0x85b55479fc43668077821234f547824d3111343aec21988f8c0aa1ff9b2ee287",
+        "vmstate": "HALT"
     },
     "error": null
 }
@@ -52,10 +43,10 @@ the number of items to skip
 curl --location --request POST 'https://testneofura.ngd.network:444' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-  "jsonrpc": "2.0",
-  "method": "GetAddressList",
-  "params": {"Limit":2,"Skip":2},
-  "id": 1
+    "jsonrpc": "2.0",
+    "id": 1,
+    "params": {"TransactionHash":"0x85b55479fc43668077821234f547824d3111343aec21988f8c0aa1ff9b2ee287"},
+    "method": "GetExecutionByTransactionHash"
 }'
 ```
 {% endtab %}
@@ -71,12 +62,11 @@ var options = {
   },
   body: JSON.stringify({
     "jsonrpc": "2.0",
-    "method": "GetAddressList",
+    "id": 1,
     "params": {
-      "Limit": 2,
-      "Skip": 2
+      "TransactionHash": "0x85b55479fc43668077821234f547824d3111343aec21988f8c0aa1ff9b2ee287"
     },
-    "id": 1
+    "method": "GetExecutionByTransactionHash"
   })
 
 };
@@ -84,7 +74,6 @@ request(options, function (error, response) {
   if (error) throw new Error(error);
   console.log(response.body);
 });
-
 ```
 {% endtab %}
 {% endtabs %}
