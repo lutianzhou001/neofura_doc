@@ -11,7 +11,7 @@ description: Gets the transfer by blockhash
 
 {% endswagger-description %}
 
-{% swagger-parameter in="body" name="BlockHash" %}
+{% swagger-parameter in="body" name="BlockHash" required="true" %}
 the block hash
 {% endswagger-parameter %}
 

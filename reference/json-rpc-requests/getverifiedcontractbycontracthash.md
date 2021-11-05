@@ -1,8 +1,8 @@
 ---
-description: Gets the verified contract
+description: Gets the verified contract by contract hash
 ---
 
-# GetVerifiedContracts
+# GetVerifiedContractByContractHash
 
 ### API Format
 
@@ -11,32 +11,24 @@ description: Gets the verified contract
 
 {% endswagger-description %}
 
-{% swagger-parameter in="body" name="Limit" type="Int" %}
-the number of results to return
+{% swagger-parameter in="body" name="ContractHash" required="true" %}
+the contract script hash
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" name="Skip" type="Int" %}
-the number of results to skip
+{% swagger-parameter in="body" name="UpdateCounter" type="int" %}
+update counts of a certain contract
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}
 ```javascript
 {
     "id": 1,
-    "result": [
-        {
-            "_id": "61700825eb743bed51ae9b20",
-            "hash": "0xcc5e4edd9f5f8dba8bb65734541df7a1c081c67b",
-            "id": -7,
-            "updatecounter": 0
-        },
-        {
-            "_id": "61700825eb743bed51ae9b21",
-            "hash": "0xd2a4cff31913016155e38e474a2c06d08be276cf",
-            "id": -6,
-            "updatecounter": 0
-        }
-    ],
+    "result": {
+        "_id": "61700825eb743bed51ae9b1e",
+        "hash": "0xfe924b7cfe89ddd271abaf7210a80a7e11178758",
+        "id": -9,
+        "updatecounter": 0
+    },
     "error": null
 }
 ```
@@ -52,8 +44,8 @@ curl --location --request POST 'https://testneofura.ngd.network:444' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "jsonrpc": "2.0",
-  "method": "GetVerifiedContracts",
-  "params": {"Skip":2,"Limit":2},
+  "method": "GetVerifiedContractByContractHash",
+  "params": {"ContractHash":"0xfe924b7cfe89ddd271abaf7210a80a7e11178758","UpdateCounter":0},
   "id": 1
 }'
 ```
@@ -70,10 +62,10 @@ var options = {
   },
   body: JSON.stringify({
     "jsonrpc": "2.0",
-    "method": "GetVerifiedContracts",
+    "method": "GetVerifiedContractByContractHash",
     "params": {
-      "Skip": 2,
-      "Limit": 2
+      "ContractHash": "0xfe924b7cfe89ddd271abaf7210a80a7e11178758",
+      "UpdateCounter": 0
     },
     "id": 1
   })
