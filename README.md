@@ -1,10 +1,14 @@
-# Welcome!
+# Welcome to Neofura!
 
-## Welcome to MyAPI
+### What is neofura
 
-Welcome to MyAPI! Here you'll find all the documentation you need to get up and running with the MyAPI API.
+neofura is a web service to provide on-chain data of Neo
 
-## Want to jump right in?
+### What kind of data we can get from neofura
+
+Anything about neo! You can not only use rpc in neo([https://docs.neo.org/docs/zh-cn/reference/rpc/latest-version/api.html](https://docs.neo.org/docs/zh-cn/reference/rpc/latest-version/api.html)) directly in neofura but also use many re-designed apis. For example, how many assets I have in my address? what's the balance of my assets? how many transactions happened in the last hour? Who are the committees and candidates? You can get the answer from Neofura now. Further more, you can email us to submit your own data needs of Neo.
+
+### Want to jump right in?
 
 Feeling like an eager beaver? Jump in to the quick start docs and get making your first request:
 
@@ -12,7 +16,7 @@ Feeling like an eager beaver? Jump in to the quick start docs and get making you
 [quick-start.md](quick-start.md)
 {% endcontent-ref %}
 
-## Want to deep dive?
+### Want to deep dive?
 
 Dive a little deeper and start exploring our API reference to get an idea of everything that's possible with the API:
 

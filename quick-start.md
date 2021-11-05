@@ -1,124 +1,190 @@
 # Quick Start
 
-{% hint style="info" %}
-**Good to know:** A quick start guide can be good to help folks get up and running with your API in a few steps. Some people prefer diving in with the basics rather than meticulously reading every page of documentation!
-{% endhint %}
+### Send a request refer to neo rpc doc
 
-## Get your API keys
+Neofura supports all neo rpc requests from [https://docs.neo.org/docs/zh-cn/reference/rpc/latest-version/api.html](https://docs.neo.org/docs/zh-cn/reference/rpc/latest-version/api.html). You can easily test it with Postman or any programming language you like.
 
-Your API requests are authenticated using API keys. Any request that doesn't include an API key will return an error.
-
-You can generate an API key from your Dashboard at any time.
+You can send a request like this
 
 {% tabs %}
 {% tab title="curl" %}
 ```
-curl https://api.myapi.com/v1/pet  
-    -u YOUR_API_KEY:  
-    -d name='Wilson'  
-    -d species='dog'  
-    -d owner_id='sha7891bikojbkreuy'  
+curl --location --request POST 'https://testneofura.ngd.network:444' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+		"jsonrpc": "2.0",
+		"method":  "getcontractstate",
+		"params": ["0xfe924b7cfe89ddd271abaf7210a80a7e11178758"],
+		"id": 1
+	}'
 ```
 {% endtab %}
 
 {% tab title="Node" %}
 ```javascript
-// require the myapi module and set it up with your API key
-const myapi = require('myapi')(YOUR_API_KEY);
+var request = require('request');
+var options = {
+  'method': 'POST',
+  'url': 'https://testneofura.ngd.network:444',
+  'headers': {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "jsonrpc": "2.0",
+    "method": "getcontractstate",
+    "params": [
+      "0xfe924b7cfe89ddd271abaf7210a80a7e11178758"
+    ],
+    "id": 1
+  })
 
-const newPet = away myapi.pet.create({
-    name: 'Wilson',
-    owner_id: 'sha7891bikojbkreuy',
-    species: 'Dog',
-    breed: 'Golden Retriever',
-})
-```
-{% endtab %}
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log(response.body);
+});
 
-{% tab title="Python" %}
-```python
-// Set your API key before making the request
-myapi.api_key = YOUR_API_KEY
-
-myapi.Pet.create(
-    name='Wilson',
-    owner_id='sha7891bikojbkreuy',
-    species='Dog',
-    breed='Golden Retriever',
-)
-```
-{% endtab %}
-{% endtabs %}
-
-## Install the library
-
-The best way to interact with our API is to use one of our official libraries:
-
-{% tabs %}
-{% tab title="Node" %}
-```
-# Install via NPM
-npm install --save my-api
-```
-{% endtab %}
-
-{% tab title="Python" %}
-```
-# Install via pip
-pip install --upgrade myapi
 ```
 {% endtab %}
 {% endtabs %}
 
-{% hint style="info" %}
-**Good to know:** Using tabs to separate out different languages is a great way to present technical examples or code documentation without cramming your docs with extra sections or pages per language.
-{% endhint %}
+And you can easily get the response
 
-## Make your first request
-
-To make your first request, send an authenticated request to the pets endpoint. This will create a `pet`, which is nice.
-
-{% swagger baseUrl="https://api.myapi.com/v1" method="post" path="/pet" summary="Create pet." %}
-{% swagger-description %}
-Creates a new pet.
-{% endswagger-description %}
-
-{% swagger-parameter in="body" name="name" required="true" type="string" %}
-The name of the pet
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="owner_id" required="false" type="string" %}
-The 
-
-`id`
-
- of the user who owns the pet
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="species" required="false" type="string" %}
-The species of the pet
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="breed" required="false" type="string" %}
-The breed of the pet
-{% endswagger-parameter %}
-
-{% swagger-response status="200" description="Pet successfully created" %}
-```javascript
+```
 {
-    "name"="Wilson",
-    "owner": {
-        "id": "sha7891bikojbkreuy",
-        "name": "Samuel Passet",
-    "species": "Dog",}
-    "breed": "Golden Retriever",
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+        "id": -9,
+        "updatecounter": 0,
+        "hash": "0xfe924b7cfe89ddd271abaf7210a80a7e11178758",
+        "nef": {
+            "magic": 860243278,
+            "compiler": "neo-core-v3.0",
+            "source": "",
+            "tokens": [],
+            "script": "EEEa93tnQBBBGvd7Z0AQQRr3e2dAEEEa93tnQBBBGvd7Z0A=",
+            "checksum": 2663858513
+        },
+        "manifest": {
+            "name": "OracleContract",
+            "groups": [],
+            "features": {},
+            "supportedstandards": [],
+            "abi": {
+                "methods": [
+                    {
+                        "name": "finish",
+                        "parameters": [],
+                        "returntype": "Void",
+                        "offset": 0,
+                        "safe": false
+                    },
+                    {
+                        "name": "getPrice",
+                        "parameters": [],
+                        "returntype": "Integer",
+                        "offset": 7,
+                        "safe": true
+                    },
+                    {
+                        "name": "request",
+                        "parameters": [
+                            {
+                                "name": "url",
+                                "type": "String"
+                            },
+                            {
+                                "name": "filter",
+                                "type": "String"
+                            },
+                            {
+                                "name": "callback",
+                                "type": "String"
+                            },
+                            {
+                                "name": "userData",
+                                "type": "Any"
+                            },
+                            {
+                                "name": "gasForResponse",
+                                "type": "Integer"
+                            }
+                        ],
+                        "returntype": "Void",
+                        "offset": 14,
+                        "safe": false
+                    },
+                    {
+                        "name": "setPrice",
+                        "parameters": [
+                            {
+                                "name": "price",
+                                "type": "Integer"
+                            }
+                        ],
+                        "returntype": "Void",
+                        "offset": 21,
+                        "safe": false
+                    },
+                    {
+                        "name": "verify",
+                        "parameters": [],
+                        "returntype": "Boolean",
+                        "offset": 28,
+                        "safe": true
+                    }
+                ],
+                "events": [
+                    {
+                        "name": "OracleRequest",
+                        "parameters": [
+                            {
+                                "name": "Id",
+                                "type": "Integer"
+                            },
+                            {
+                                "name": "RequestContract",
+                                "type": "Hash160"
+                            },
+                            {
+                                "name": "Url",
+                                "type": "String"
+                            },
+                            {
+                                "name": "Filter",
+                                "type": "String"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OracleResponse",
+                        "parameters": [
+                            {
+                                "name": "Id",
+                                "type": "Integer"
+                            },
+                            {
+                                "name": "OriginalTx",
+                                "type": "Hash256"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "permissions": [
+                {
+                    "contract": "*",
+                    "methods": "*"
+                }
+            ],
+            "trusts": [],
+            "extra": null
+        }
+    }
 }
 ```
-{% endswagger-response %}
 
-{% swagger-response status="401" description="Permission denied" %}
+### Send a request refer to neofura doc
 
-{% endswagger-response %}
-{% endswagger %}
-
-Take a look at how you might call this method using our official libraries, or via `curl`:
+Refer to JSON-RPC Requests in this doc to make a request by yourself!

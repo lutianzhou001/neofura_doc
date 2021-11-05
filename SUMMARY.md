@@ -1,12 +1,10 @@
 # Table of contents
 
-* [Welcome!](README.md)
-* [Page 4](page-4.md)
+* [Welcome to Neofura!](README.md)
 * [Quick Start](quick-start.md)
 
 ## Reference
 
-* [Page 2](reference/page-2.md)
 * [🍉 JSON-RPC Requests](reference/json-rpc-requests/README.md)
   * [GetActiveAddresses](reference/json-rpc-requests/getactiveaddresses.md)
   * [GetAddressByAddress](reference/json-rpc-requests/getaddressbyaddress.md)
@@ -90,7 +88,3 @@
   * [GetVmStateByTransactionHash](reference/json-rpc-requests/getvmstatebytransactionhash.md)
   * [GetVotersByCandidateAddress](reference/json-rpc-requests/getvotersbycandidateaddress.md)
   * [GetVotesByCandidateAddress](reference/json-rpc-requests/getvotesbycandidateaddress.md)
-
-## Group 1
-
-* [Page 1](group-1/page-1.md)

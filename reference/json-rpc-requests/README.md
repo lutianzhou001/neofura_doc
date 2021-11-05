@@ -2,8 +2,6 @@
 
 Dive into the specifics of each API endpoint by checking out our complete documentation.
 
-All the methods associated with `CRUD`ing some pets. Which isn't as weird as it sounds:
-
 {% content-ref url="getactiveaddresses.md" %}
 [getactiveaddresses.md](getactiveaddresses.md)
 {% endcontent-ref %}
