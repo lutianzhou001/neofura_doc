@@ -12,7 +12,7 @@ description: Get votes by candidate address
 {% endswagger-description %}
 
 {% swagger-parameter in="body" name="CandidateAddress" required="true" %}
-
+the candidate address
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}

@@ -12,7 +12,7 @@ description: Gets the transaction count by given user's address
 {% endswagger-description %}
 
 {% swagger-parameter in="body" name="Address" required="true" type="String" %}
-
+the user's address
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}

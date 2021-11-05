@@ -8,15 +8,15 @@ Gets the transfer by user's address
 {% endswagger-description %}
 
 {% swagger-parameter in="body" name="Address" required="true" %}
-
+the user's address
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="Limit" type="Int" %}
-
+the number of results to return
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="Skip" type="Int" %}
-
+the number of results to skip
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}

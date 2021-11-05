@@ -12,7 +12,7 @@ description: Gets the vm state by transaction hash
 {% endswagger-description %}
 
 {% swagger-parameter in="body" name="TransactionHash" required="true" %}
-
+the transaction hash
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}

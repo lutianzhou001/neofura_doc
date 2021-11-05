@@ -12,7 +12,7 @@ description: Gets the transfer by blockhash
 {% endswagger-description %}
 
 {% swagger-parameter in="body" name="BlockHash" %}
-
+the block hash
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}

@@ -12,7 +12,7 @@ description: Gets the transfer info by blockheight
 {% endswagger-description %}
 
 {% swagger-parameter in="body" name="BlockHeight" required="true" type="Int" %}
-
+the block height
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}

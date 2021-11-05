@@ -86,6 +86,7 @@
   * [GetTransferByBlockHash](reference/json-rpc-requests/gettransferbyblockhash.md)
   * [GetTransferByBlockHeight](reference/json-rpc-requests/gettransferbyblockheight.md)
   * [GetTransferEventByTransactionHash](reference/json-rpc-requests/gettransfereventbytransactionhash.md)
+  * [GetVerifiedContracts](reference/json-rpc-requests/getverifiedcontracts.md)
   * [GetVmStateByTransactionHash](reference/json-rpc-requests/getvmstatebytransactionhash.md)
   * [GetVotersByCandidateAddress](reference/json-rpc-requests/getvotersbycandidateaddress.md)
   * [GetVotesByCandidateAddress](reference/json-rpc-requests/getvotesbycandidateaddress.md)

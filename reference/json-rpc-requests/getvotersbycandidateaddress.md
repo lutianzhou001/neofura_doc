@@ -12,15 +12,15 @@ description: Gets the voters by candidate address
 {% endswagger-description %}
 
 {% swagger-parameter in="body" name="CandidateAddress" required="true" %}
-
+the candidate address
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="Limit" type="Int" %}
-
+the number of results to return 
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="Skip" type="Int" %}
-
+the number of results to skip
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}
